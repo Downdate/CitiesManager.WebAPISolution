@@ -7,7 +7,7 @@ namespace CitiesManager.WebAPI.Models
         [Key]
         public Guid CityID { get; set; }
 
-        public string CityName { get; set; }
+        public string? CityName { get; set; }
         
     }
 }

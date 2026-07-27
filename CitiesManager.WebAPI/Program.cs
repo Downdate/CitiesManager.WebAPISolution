@@ -12,6 +12,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddEndpointsApiExplorer(); // generates description for all endpoints
+builder.Services.AddSwaggerGen(); // generates OpenAPI specification
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,6 +22,9 @@ var app = builder.Build();
 app.UseHsts();
 
 app.UseHttpsRedirection();
+
+app.UseSwagger(); // Enable middleware to serve generated Swagger as a JSON endpoint.
+app.UseSwaggerUI(); // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
 
 app.UseAuthorization();
 

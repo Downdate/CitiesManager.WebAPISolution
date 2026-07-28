@@ -14,6 +14,10 @@ public class CitiesController : ControllerBase
     }
 
     // GET: api/City
+    /// <summary>
+    /// to get a list of all cities (including CityID and CityName) from Cities table in the database
+    /// </summary>
+    /// <returns>city</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<City>>> GetCity()
     {

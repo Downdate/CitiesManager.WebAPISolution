@@ -8,6 +8,6 @@ namespace CitiesManager.WebAPI.Models
         public Guid CityID { get; set; }
 
         public string? CityName { get; set; }
-        
+
     }
 }

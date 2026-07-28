@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CitiesManager.WebAPI.Controllers.v2
 {
-
+    [ApiVersion("2.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class CitiesController : ControllerBase

@@ -23,9 +23,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer(); // generates description for all endpoints
 builder.Services.AddSwaggerGen(options => options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "api.xml"))); // generates OpenAPI specification
 
-builder.Services.AddApiVersioning(config =>
-config.ApiVersionReader = new UrlSegmentApiVersionReader()
-);
+builder.Services.AddApiVersioning(config => {
+    config.ApiVersionReader = new UrlSegmentApiVersionReader();
+    //config.ApiVersionReader = new QueryStringApiVersionReader();// Reads version number from request query string called "api-version"
+    //config.ApiVersionReader = new HeaderApiVersionReader("api-version"); // Reads version number from request header called "api-version"
+
+    //default api version declaration
+    config.DefaultApiVersion = new ApiVersion(1, 0);
+    config.AssumeDefaultVersionWhenUnspecified = true;
+});
+
+
 
 var app = builder.Build();
 

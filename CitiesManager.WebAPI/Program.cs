@@ -1,5 +1,6 @@
 using CitiesManager.WebAPI.DatabaseContext;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddEndpointsApiExplorer(); // generates description for all endpoints
 builder.Services.AddSwaggerGen(options => options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "api.xml"))); // generates OpenAPI specification
+
+builder.Services.AddApiVersioning(config =>
+config.ApiVersionReader = new UrlSegmentApiVersionReader()
+);
 
 var app = builder.Build();
 
